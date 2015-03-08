@@ -9,6 +9,9 @@ namespace LoLAssist
 {
     public partial class frmMain : Form
     {
+        private static Queue queue = Queue.RankedSolo5x5;
+
+
         public frmMain()
         {
             InitializeComponent();
@@ -63,31 +66,7 @@ namespace LoLAssist
         //Get Ranked Info Button
         private void btnGetRankedInfo_Click(object sender, EventArgs e)
         {
-            string getSummonerID = txtSummonerName.Text;
-
-            Chilkat.Http http = new Chilkat.Http();
-
-            bool success;
-
-            //  Any string unlocks the component for the 1st 30-days.
-            success = http.UnlockComponent("RCKVGHHttp_AY8XA2SURK3o");
-            if (success != true)
-            {
-                txtJSONReply.Text = http.LastErrorText;
-                return;
-            }
-
-            //  Send the HTTP GET and return the content in a string.
-
-            string html = "nothing";
-            string jsonText = "/api/lol/" + GlobalVar.SummonerRegion + "/v1.3/stats/by-summoner/" + GlobalVar.SummonerID + "/ranked?season=SEASON4&";
-            html = http.QuickGetStr("https://na.api.pvp.net" + jsonText + "api_key=" + GlobalVar.apiKey);
-            //txtJSONReply.Text = html;
-
-            //deserialize
-            JObject json = JObject.Parse(html);
-            JArray jArr = (JArray)json.SelectToken("champions");
-            JObject championStats = (JObject)jArr[0].SelectToken("");
+           
         }
 
         private void btnDLLGetID_Click(object sender, EventArgs e)
@@ -130,6 +109,41 @@ namespace LoLAssist
             var mostPlayedChamp = staticApi.GetChampion(LoLAssist.Region.na, mostPlayedChampId);
 
             txtJSONReply.Text = mostPlayedChamp.Name;
+        }
+
+        private void btnGetInfo_Click(object sender, EventArgs e)
+        {
+
+            
+
+
+            //get the summoner name
+            var summonerName = txtSummonerName.Text;
+            //fire off our API key from Riot
+            var api = RiotApi.GetInstance("ff7e1c46-b7d3-4251-a5f9-61f29495cdeb");
+            //get our summoner id from the summoner name
+            var summoner = api.GetSummoner(LoLAssist.Region.na, summonerName);
+            //add the summoner name and id to the text box
+            txtJSONReply.Text = txtJSONReply.Text + "Name: " + summoner.Name.ToString() + Environment.NewLine;
+            txtJSONReply.Text = txtJSONReply.Text + "ID: " + summoner.Id.ToString() + Environment.NewLine;
+            txtJSONReply.Text = txtJSONReply.Text + "Level: " + summoner.Level.ToString() + Environment.NewLine;
+            txtJSONReply.Text = txtJSONReply.Text + "Icon: " + summoner.ProfileIconId.ToString() + Environment.NewLine;
+            txtJSONReply.Text = txtJSONReply.Text + "Region: " + summoner.Region.ToString() + Environment.NewLine;
+            txtJSONReply.Text = txtJSONReply.Text + "Revision Date: " + summoner.RevisionDate.ToString() + Environment.NewLine;
+
+            var matches = summoner.GetMatchHistory(0, 14, null, new List<Queue>() { queue });
+            foreach (var match in matches)
+            {
+                txtJSONReply.Text = txtJSONReply.Text + "Match Type: " + match.MapType.ToString() + Environment.NewLine;
+                txtJSONReply.Text = txtJSONReply.Text + "Match Duration: " + match.MatchDuration.ToString() + Environment.NewLine;
+                txtJSONReply.Text = txtJSONReply.Text + "Match ID: " + match.MatchId.ToString() + Environment.NewLine;
+
+                //var participants = match.Participants
+                txtJSONReply.Text = txtJSONReply.Text + "Match Participants: " + match.Participants.ToString() + Environment.NewLine;
+                
+            }
+
+            
         }
     }
 }

@@ -37,11 +37,12 @@
             this.btnAnnieRange = new System.Windows.Forms.Button();
             this.btnS4Kills = new System.Windows.Forms.Button();
             this.btnRecentGames = new System.Windows.Forms.Button();
+            this.btnGetInfo = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnGetSummonerID
             // 
-            this.btnGetSummonerID.Location = new System.Drawing.Point(30, 122);
+            this.btnGetSummonerID.Location = new System.Drawing.Point(5, 51);
             this.btnGetSummonerID.Name = "btnGetSummonerID";
             this.btnGetSummonerID.Size = new System.Drawing.Size(75, 23);
             this.btnGetSummonerID.TabIndex = 0;
@@ -52,7 +53,7 @@
             // lblSummonerID
             // 
             this.lblSummonerID.AutoSize = true;
-            this.lblSummonerID.Location = new System.Drawing.Point(145, 108);
+            this.lblSummonerID.Location = new System.Drawing.Point(12, 35);
             this.lblSummonerID.Name = "lblSummonerID";
             this.lblSummonerID.Size = new System.Drawing.Size(18, 13);
             this.lblSummonerID.TabIndex = 1;
@@ -60,15 +61,15 @@
             // 
             // txtJSONReply
             // 
-            this.txtJSONReply.Location = new System.Drawing.Point(148, 124);
+            this.txtJSONReply.Location = new System.Drawing.Point(285, 12);
             this.txtJSONReply.Multiline = true;
             this.txtJSONReply.Name = "txtJSONReply";
-            this.txtJSONReply.Size = new System.Drawing.Size(684, 323);
+            this.txtJSONReply.Size = new System.Drawing.Size(547, 677);
             this.txtJSONReply.TabIndex = 2;
             // 
             // txtSummonerName
             // 
-            this.txtSummonerName.Location = new System.Drawing.Point(42, 21);
+            this.txtSummonerName.Location = new System.Drawing.Point(5, 12);
             this.txtSummonerName.Name = "txtSummonerName";
             this.txtSummonerName.Size = new System.Drawing.Size(100, 20);
             this.txtSummonerName.TabIndex = 3;
@@ -76,7 +77,7 @@
             // 
             // btnGetRankedInfo
             // 
-            this.btnGetRankedInfo.Location = new System.Drawing.Point(30, 161);
+            this.btnGetRankedInfo.Location = new System.Drawing.Point(5, 80);
             this.btnGetRankedInfo.Name = "btnGetRankedInfo";
             this.btnGetRankedInfo.Size = new System.Drawing.Size(75, 23);
             this.btnGetRankedInfo.TabIndex = 4;
@@ -86,7 +87,7 @@
             // 
             // btnDLLGetID
             // 
-            this.btnDLLGetID.Location = new System.Drawing.Point(30, 191);
+            this.btnDLLGetID.Location = new System.Drawing.Point(5, 110);
             this.btnDLLGetID.Name = "btnDLLGetID";
             this.btnDLLGetID.Size = new System.Drawing.Size(75, 23);
             this.btnDLLGetID.TabIndex = 5;
@@ -96,7 +97,7 @@
             // 
             // btnAnnieRange
             // 
-            this.btnAnnieRange.Location = new System.Drawing.Point(30, 220);
+            this.btnAnnieRange.Location = new System.Drawing.Point(5, 139);
             this.btnAnnieRange.Name = "btnAnnieRange";
             this.btnAnnieRange.Size = new System.Drawing.Size(75, 23);
             this.btnAnnieRange.TabIndex = 6;
@@ -106,7 +107,7 @@
             // 
             // btnS4Kills
             // 
-            this.btnS4Kills.Location = new System.Drawing.Point(30, 249);
+            this.btnS4Kills.Location = new System.Drawing.Point(5, 168);
             this.btnS4Kills.Name = "btnS4Kills";
             this.btnS4Kills.Size = new System.Drawing.Size(75, 23);
             this.btnS4Kills.TabIndex = 7;
@@ -116,7 +117,7 @@
             // 
             // btnRecentGames
             // 
-            this.btnRecentGames.Location = new System.Drawing.Point(30, 278);
+            this.btnRecentGames.Location = new System.Drawing.Point(5, 197);
             this.btnRecentGames.Name = "btnRecentGames";
             this.btnRecentGames.Size = new System.Drawing.Size(75, 23);
             this.btnRecentGames.TabIndex = 8;
@@ -124,11 +125,22 @@
             this.btnRecentGames.UseVisualStyleBackColor = true;
             this.btnRecentGames.Click += new System.EventHandler(this.btnRecentGames_Click);
             // 
+            // btnGetInfo
+            // 
+            this.btnGetInfo.Location = new System.Drawing.Point(5, 226);
+            this.btnGetInfo.Name = "btnGetInfo";
+            this.btnGetInfo.Size = new System.Drawing.Size(75, 23);
+            this.btnGetInfo.TabIndex = 9;
+            this.btnGetInfo.Text = "Get Info";
+            this.btnGetInfo.UseVisualStyleBackColor = true;
+            this.btnGetInfo.Click += new System.EventHandler(this.btnGetInfo_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 460);
+            this.ClientSize = new System.Drawing.Size(844, 701);
+            this.Controls.Add(this.btnGetInfo);
             this.Controls.Add(this.btnRecentGames);
             this.Controls.Add(this.btnS4Kills);
             this.Controls.Add(this.btnAnnieRange);
@@ -157,6 +169,7 @@
         private System.Windows.Forms.Button btnAnnieRange;
         private System.Windows.Forms.Button btnS4Kills;
         private System.Windows.Forms.Button btnRecentGames;
+        private System.Windows.Forms.Button btnGetInfo;
     }
 }
 
